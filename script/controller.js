@@ -18,15 +18,15 @@ function Controller() {
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="material-icons prefix">account_circle</i>
-                        <input id="icon_prefix" type="text" class="validate">
-                        <label for="icon_prefix">User</label>
+                        <input id="login_input" type="text" class="validate">
+                        <label for="login_input">User</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="material-icons prefix">lock</i>
-                        <input id="icon_prefix2" type="password" class="validate">
-                        <label for="icon_prefix2">Password</label>
+                        <input id="password_input" type="password" class="validate">
+                        <label for="password_input">Password</label>
                     </div>
                 </div>
 
@@ -41,7 +41,7 @@ function Controller() {
 
                 <div class="row">
                     <div class="input-field col s12" style="padding-top: 20px;">
-                        <a href="#" class="btn waves-effect waves-light col s12" style="background: linear-gradient(90deg, rgba(34,35,64,1) 0%, rgba(65,68,145,1) 100%);">Login</a>
+                    <a href="#" class="btn waves-effect waves-light col s12" style="background: linear-gradient(90deg, rgba(34,35,64,1) 0%, rgba(65,68,145,1) 100%);" onclick="Controller.logUser()";>Login</a>
                     </div>
                 </div>
 
@@ -58,7 +58,7 @@ function Controller() {
         `;
 
         return `
-            <div class="content_login_container" style="background-color: #ede7f6">
+            <div id="content_login_container" class="content_login_container" style="background-color: #ede7f6">
                 <div class="col s12 z-depth-6 card-panel content_login_card">
                     ${icon}
                     ${inputs}  
@@ -137,6 +137,15 @@ function Controller() {
     }
 
     this.loginScreen = () => {
+        var sUser = sessionStorage.getItem("loggedUser"),
+        loggedUser = null;
+
+         if (sUser) {
+            loggedUser = JSON.parse(sUser);
+        }
+
+        var content_screen = loggedUser ? Controller.generateLoggedScreen(loggedUser) : Controller.contentLogin();
+
         return `
             <div class="base_container">
                 ${Controller.sideBar()}
