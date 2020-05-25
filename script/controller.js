@@ -154,6 +154,33 @@ function Controller() {
         `;
     }
 
+    this.logUser = () => {
+        debugger;
+        var loggedUser = {
+            login: document.getElementById('login_input').value,
+            password: document.getElementById('password_input').value
+        };
+
+        sessionStorage.setItem("loggedUser", JSON.stringify(loggedUser));
+
+        var loggedScreen = Controller.generateLoggedScreen(loggedUser);
+        document.getElementById('content_login_container').innerHTML = loggedScreen;
+    }
+
+    this.generateLoggedScreen = (loggedUser) => {
+        var general_info = `
+            <div id="content_login_container" class="content_login_container" style="background-color: #ede7f6">
+                <div style="font-weight: bold;">
+                    You are logged!
+                    <div> User: ${loggedUser.login} </div>
+                    <div> Password: ${loggedUser.password} (demo only) </div>
+                </div>
+            </div>
+        `;
+
+        return general_info;
+    }
+
     this.initialize = () => {
         document.getElementById('root').innerHTML = Controller.loginScreen();
     }
