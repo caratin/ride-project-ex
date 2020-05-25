@@ -1,5 +1,3 @@
-
-
 function Controller() {
     this.currentPage = 'login';
     this.router = {
@@ -70,6 +68,16 @@ function Controller() {
     }
 
     this.sideBar = () => {
+        var storageDarkMode = localStorage.getItem("dark_mode");
+        var darkModeIsActive = false;
+
+        if (storageDarkMode) {
+            darkModeIsActive = storageDarkMode === "true" ? true : false;
+        }
+
+        var checkDarkModeBoolean = darkModeIsActive ? 'checked' : '';
+        var darkModeBackground = darkModeIsActive ? 'base_dark_background' : '';
+
         let sidebar_top = `
             <h4 class="sidebar_top"> FTT Caronas </h4>
         `;
@@ -99,7 +107,6 @@ function Controller() {
                     </div>
                 </div>
             </div>
-
         `;
 
         let sidebar_bottom = `
@@ -112,7 +119,7 @@ function Controller() {
                     <div class="row" style="width: 100%;">
                         <div class="input-field col s12">
                             <label>
-                                <input type="checkbox" onchange="Controller.darkModeHandler(this)"/>
+                                <input type="checkbox" ${checkDarkModeBoolean} onchange="Controller.darkModeHandler(this)"/>
                                 <span style="color: white; padding-left: 44px;">Dark Mode</span>
                             </label>
                         </div>
@@ -122,7 +129,7 @@ function Controller() {
         `;
 
         return `
-            <div id="sidebar_container" class="sidebar_container">
+            <div id="sidebar_container" class="sidebar_container ${darkModeBackground}">
                 ${sidebar_middle}
                 ${sidebar_bottom}
             </div>
