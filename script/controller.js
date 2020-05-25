@@ -106,7 +106,17 @@ function Controller() {
             <div class="sidebar_bottom_container">
                 <div class="sidebar_middle_item_container">
                     <i class="material-icons Small">settings</i>
-                    <div class="sidebar_middle_item_label"> Configurações </div>
+                    <div class="sidebar_middle_item_label"> Config </div>
+                </div>
+                <div class="sidebar_middle_item_container" style="padding-top: 0px;">
+                    <div class="row" style="width: 100%;">
+                        <div class="input-field col s12">
+                            <label>
+                                <input type="checkbox" />
+                                <span style="color: white; padding-left: 44px;">Dark Mode</span>
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
         `;
