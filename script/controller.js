@@ -41,7 +41,7 @@ function Controller() {
 
                 <div class="row">
                     <div class="input-field col s12" style="padding-top: 20px;">
-                    <a href="#" class="btn waves-effect waves-light col s12" style="background: linear-gradient(90deg, rgba(34,35,64,1) 0%, rgba(65,68,145,1) 100%);" onclick="Controller.logUser()";>Login</a>
+                        <a href="#" class="btn waves-effect waves-light col s12" style="background: linear-gradient(90deg, rgba(34,35,64,1) 0%, rgba(65,68,145,1) 100%);" onclick="Controller.logUser()";>Login</a>
                     </div>
                 </div>
 
@@ -138,9 +138,9 @@ function Controller() {
 
     this.loginScreen = () => {
         var sUser = sessionStorage.getItem("loggedUser"),
-        loggedUser = null;
+            loggedUser = null;
 
-         if (sUser) {
+        if (sUser) {
             loggedUser = JSON.parse(sUser);
         }
 
@@ -149,7 +149,7 @@ function Controller() {
         return `
             <div class="base_container">
                 ${Controller.sideBar()}
-                ${Controller.contentLogin()}
+                ${content_screen}
             </div>
         `;
     }
