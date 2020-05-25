@@ -72,6 +72,10 @@
     background-color: #222340;
 }
 
+.base_dark_background {
+    background-color: black !important;
+}
+
 .content_login_card {
     width: 50%;
     height: 520px;

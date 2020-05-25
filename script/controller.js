@@ -112,7 +112,7 @@ function Controller() {
                     <div class="row" style="width: 100%;">
                         <div class="input-field col s12">
                             <label>
-                                <input type="checkbox" />
+                                <input type="checkbox" onchange="Controller.darkModeHandler(this)"/>
                                 <span style="color: white; padding-left: 44px;">Dark Mode</span>
                             </label>
                         </div>
@@ -122,7 +122,7 @@ function Controller() {
         `;
 
         return `
-            <div class="sidebar_container">
+            <div id="sidebar_container" class="sidebar_container">
                 ${sidebar_middle}
                 ${sidebar_bottom}
             </div>
@@ -140,6 +140,11 @@ function Controller() {
 
     this.initialize = () => {
         document.getElementById('root').innerHTML = Controller.loginScreen();
+    }
+
+    this.darkModeHandler = (element) => {
+        localStorage.setItem("dark_mode", element.checked);
+        document.getElementById('sidebar_container').classList.toggle('base_dark_background');
     }
 }
 
@@ -163,4 +168,7 @@ Controller.contentLogin = () => {
 }
 Controller.loginScreen = () => {
     return Controller.getInstance().loginScreen();
+}
+Controller.darkModeHandler = (element) => {
+    return Controller.getInstance().darkModeHandler(element);
 }
