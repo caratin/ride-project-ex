@@ -215,3 +215,9 @@ Controller.loginScreen = () => {
 Controller.darkModeHandler = (element) => {
     return Controller.getInstance().darkModeHandler(element);
 }
+Controller.logUser = () => {
+    Controller.getInstance().logUser();
+}
+Controller.generateLoggedScreen = (loggedUser) => {
+    return Controller.getInstance().generateLoggedScreen(loggedUser);
+}
